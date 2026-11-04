@@ -1,0 +1,37 @@
+const fs=require('node:fs');
+const vm=require('node:vm');
+const assert=require('node:assert/strict');
+const html=fs.readFileSync('dist/index.html','utf8');
+assert.equal((html.match(/<article class="card"/g)||[]).length,10);
+assert.equal((html.match(/data-product=/g)||[]).length,10);
+assert.equal((html.match(/<svg /g)||[]).length,12);
+for(const id of ['inicio','catalogo','nosotros','contacto'])assert(html.includes('id="'+id+'"'));
+const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);
+assert.equal(ids.length,new Set(ids).size);
+assert(!html.includes('<!--PRODUCTS-->'));
+assert(!html.includes('http://')||html.match(/http:\/\/www.w3.org\/2000\/svg/));
+const script=html.match(/<script>([\s\S]*?)<\/script>/)[1];
+new vm.Script(script);
+// Exercise actual filter behavior with a minimal DOM fixture.
+const productCards=[...html.matchAll(/data-category="([^"]+)" data-search="([^"]+)"/g)].map(m=>({dataset:{category:m[1],search:m[2]},hidden:false}));
+const elements={};
+function element(){return {value:'',hidden:false,textContent:'',listeners:{},addEventListener(type,fn){this.listeners[type]=fn},setAttribute(){},focus(){},scrollIntoView(){}};}
+for(const id of ['search','count','empty','clear','quote-form','copy','message','result','copy-status','selected-product','contacto'])elements['#'+id]=element();
+const categories=['Todos','Videovigilancia','Acceso inteligente','Alarmas','Redes y energía'];
+const filters=categories.map(filter=>Object.assign(element(),{dataset:{filter}}));
+filters.forEach(f=>f.click=()=>f.listeners.click());
+const context={document:{querySelector:s=>elements[s],querySelectorAll:s=>s==='.card'?productCards:s==='[data-filter]'?filters:[]},navigator:{},matchMedia:()=>({matches:true})};
+vm.createContext(context);vm.runInContext(script,context);
+filters[1].click();assert.equal(productCards.filter(c=>!c.hidden).length,4);
+filters[2].click();assert.equal(productCards.filter(c=>!c.hidden).length,3);
+filters[3].click();assert.equal(productCards.filter(c=>!c.hidden).length,2);
+filters[4].click();assert.equal(productCards.filter(c=>!c.hidden).length,1);
+filters[0].click();elements['#search'].value='camara ip bullet';elements['#search'].listeners.input();assert.equal(productCards.filter(c=>!c.hidden).length,1);
+elements['#search'].value='inexistente';elements['#search'].listeners.input();assert.equal(elements['#empty'].hidden,false);
+elements['#clear'].listeners.click();assert.equal(productCards.filter(c=>!c.hidden).length,10);
+context.FormData=function(){return new Map([['nombre','Ana'],['producto','Cámara IP Bullet 4 MP'],['espacio','Hogar'],['detalle','Entrada principal']]);};
+elements['#quote-form'].listeners.submit({preventDefault(){}});
+assert(elements['#message'].value.includes('Ana'));
+assert(elements['#message'].value.includes('\nProducto: Cámara IP Bullet 4 MP'));
+assert.equal(elements['#result'].hidden,false);
+console.log('OK: 10 fichas, SVG, IDs únicos, sintaxis JS, 4 categorías, búsqueda sin tildes, estado vacío, reinicio y generación de solicitud.');
