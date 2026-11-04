@@ -18,6 +18,10 @@ Para editar el archivo terminado, modifica `dist/index.html`. Para regenerarlo, 
 
 El resumen de los diez productos está en `PRODUCTOS.md`.
 
-## Verificación
+## Publicación en Vercel
+
+El archivo `vercel.json` indica que la carpeta pública es `dist`. No se necesita instalar dependencias ni ejecutar un build. En Vercel, la raíz del proyecto debe ser la raíz del repositorio. Cada push a `main` inicia una publicación si la integración de GitHub está activa.
+
+## Comprobación local
 
 Ejecuta `node verificar.cjs`. Comprueba la estructura, el JavaScript, filtros, búsqueda y preparación de la solicitud. Estas comprobaciones no sustituyen una revisión visual en navegador.
