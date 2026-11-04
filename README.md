@@ -1,4 +1,6 @@
-# NEXO Seguridad — ejemplo para clase de IA
+# web-seguridad
+
+Catálogo NEXO Seguridad — ejemplo para clase de IA.
 
 Abre `dist/index.html` en un navegador. El archivo contiene HTML, CSS, JavaScript y todas las ilustraciones SVG. Funciona sin instalar dependencias y sin conexiones externas.
 
