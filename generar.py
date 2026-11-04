@@ -31,7 +31,14 @@ cards=''
 for i,(name,cat,kind,desc,specs) in enumerate(products,1):
     cards+=f'<article class="card" data-category="{cat}" data-search="{escape(name+" "+cat+" "+desc+" "+" ".join(specs))}"><div class="product-art"><span class="ref">NX-{i:03}</span>{svg(kind,name)}</div><div class="card-body"><p class="eyebrow">{cat}</p><h3>{name}</h3><p class="description">{desc}</p><ul>'+''.join('<li>'+escape(s)+'</li>' for s in specs)+f'</ul><button class="quote" data-product="{name}" type="button">Cotizar producto <span aria-hidden="true">↗</span></button></div></article>'
 template=(ROOT/'plantilla.html').read_text(encoding='utf-8')
+template=template.replace('</style>',(ROOT/'tema.css').read_text(encoding='utf-8')+'\n</style>')
+template=template.replace('</nav></header>','</nav><nav class="category-nav" aria-label="Soluciones"><div class="wrap"><a href="#catalogo" data-category-target="Todos">TODOS LOS PRODUCTOS</a><a href="#catalogo" data-category-target="Videovigilancia">Cámaras de seguridad</a><a href="#catalogo" data-category-target="Acceso inteligente">Acceso inteligente</a><a href="#catalogo" data-category-target="Alarmas">Alarmas</a><a href="#catalogo" data-category-target="Redes y energía">Redes y energía</a><a href="#nosotros">Instalación y soporte</a></div></nav></header>')
+template=template.replace('</script>',"document.querySelectorAll('[data-category-target]').forEach(link=>link.addEventListener('click',()=>{search.value='';filters.find(button=>button.dataset.filter===link.dataset.categoryTarget).click();}));\n</script>")
 html=template.replace('<!--HERO-->',svg('bullet','Ilustración de cámara IP Bullet')).replace('<!--PRODUCTS-->',cards).replace('<!--OPTIONS-->',''.join('<option>'+escape(p[0])+'</option>' for p in products))
+# Keep the existing product drawings and adapt their materials to the blue theme.
+palette={'#edf1e9':'#eff4fb','#365c49':'#375d8b','#17382f':'#17345d','#486c5d':'#547ca4','#0a211a':'#071b35','#a7ddc0':'#94dafa','#fafcf7':'#fafcff','#0b211a':'#0b2344','#587866':'#5b7eaa','#f8fbf3':'#f8fbff','#739c87':'#6ba6cf','#67816e':'#6382ac','#234b37':'#214b80','#758d77':'#719bc8','#d2ed94':'#47bfe9','#8cac8b':'#8abddd','#c2e496':'#9de6ff','#c9ddbd':'#b9dcf5','#b7c2b3':'#b8c7d8','#a4bc9a':'#9bc2e5','#acd19f':'#96d4f7','#8cab7a':'#6ea6d5','#bfd0b9':'#bdd5ed','#779782':'#779ac0','#eff4ee':'#eff6fd','#73926e':'#6998c5','#849a7e':'#7898be'}
+for before,after in palette.items():
+    html=html.replace(before,after)
 (ROOT/'dist'/'index.html').write_text(html,encoding='utf-8')
 table=['| Producto | Categoría | Especificaciones de ejemplo |','|---|---|---|']+['| '+p[0]+' | '+p[1]+' | '+'; '.join(p[4])+' |' for p in products]
 (ROOT/'PRODUCTOS.md').write_text('# Productos de ejemplo\n\nMarca ficticia: NEXO Seguridad. Equipos genéricos sin referencia comercial.\n\n'+'\n'.join(table)+'\n',encoding='utf-8')

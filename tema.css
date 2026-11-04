@@ -1,0 +1,34 @@
+/* Tema de práctica inspirado en la paleta azul, celeste y blanco de La Competencia. */
+:root{--ink:#004ba5;--muted:#596778;--paper:#fff;--line:#e0e7ef;--lime:#b8e9fa;--cyan:#47bfe9;--navy:#123569}
+body{color:#23364c;background:#fff}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline-color:#0088b5}
+.demo{background:#004ba5;color:#fff;font-size:10px;padding:9px 16px;letter-spacing:.1em}
+.header{background:white;border-bottom:0;box-shadow:0 2px 10px #003f7810}
+.nav{min-height:100px}.brand{color:#004ba5}.brand strong{font-size:30px;letter-spacing:-1.2px}.brand small{letter-spacing:4px}
+.brand-icon{width:39px;height:44px}.links{color:#004ba5;font-weight:600}.links a:hover{color:#007caa}
+.btn{background:#004ba5;border-color:#004ba5;border-radius:4px;transition:background .15s,color .15s}
+.btn:hover{background:#0063bd;border-color:#0063bd}.btn.ghost{color:#004ba5;background:#fff;border-color:#c6d8eb}.btn.ghost:hover{background:#edf8fe;border-color:#47bfe9}
+.category-nav{background:#f5f9fd;border-top:1px solid #e8eef5;border-bottom:2px solid #004ba5}
+.category-nav .wrap{display:flex;gap:24px;overflow:auto;align-items:center;padding-top:13px;padding-bottom:13px;scrollbar-width:thin}
+.category-nav a{color:#004ba5;font-size:11px;white-space:nowrap;font-weight:600}.category-nav a:hover{color:#007fa8}
+.category-nav a:first-child{font-weight:800;padding-right:22px;border-right:1px solid #cbd9e9}
+.hero{background:linear-gradient(115deg,#004ba5 0%,#075cb6 50%,#229bd3 100%);color:#fff;border-radius:5px;margin-top:26px;margin-bottom:30px;padding:30px 24px;gap:25px;overflow:hidden}
+.hero .eyebrow{color:#c5efff;font-size:9px;letter-spacing:1.5px}.dot{background:#79d8fb}
+h1{font-weight:700;letter-spacing:-1.8px;font-size:clamp(36px,5.5vw,64px);margin-top:17px}h1 em{color:#9de6ff}
+.hero-copy>p:not(.eyebrow){color:#e4f2ff;font-size:14px}.hero .actions{gap:10px}.hero .btn{background:#fff;color:#004ba5;border-color:#fff}.hero .btn:hover{background:#ddf4ff}.hero .btn.ghost{background:transparent;color:#fff;border-color:#8ec9ed}
+.hero-note{color:#d9f2ff;font-size:10px}.hero-art{background-color:#edf8ff;background-image:linear-gradient(#b4d6ec40 1px,transparent 1px),linear-gradient(90deg,#b4d6ec40 1px,transparent 1px);min-height:300px;border-radius:50% 50% 10px 10px;color:#004ba5}
+.hero-art:before{border-color:#a2d0ec}.hero-art>svg{width:90%}.art-top{font-size:8px;letter-spacing:1.1px}.art-index{color:#456a91}.art-label{color:#004ba5;border:1px solid #dce9f5;box-shadow:0 6px 20px #004ba514}.art-tag{color:#356185;border-color:#9ac4e1;background:#ffffffb3}
+.benefits{border:1px solid #e0e9f3;border-radius:4px;background:#f8fbfe;padding:22px 16px;color:#284b70;font-size:10px}.benefits b{color:#0087b7;font-size:22px}.benefits span+span{border-color:#d6e3f2}
+.catalog{padding-top:48px}.section-top{justify-content:center;text-align:center}.section-top>p{display:none}.section-top .eyebrow{color:#007ca6}.section-top h2{color:#004ba5;font-weight:700;font-size:clamp(26px,3.5vw,35px);letter-spacing:-.7px}.section-top h2:after{content:"";display:block;height:3px;width:52px;background:#47bfe9;margin:20px auto 0}
+.tools{background:#f7f9fc;padding:15px;border:1px solid #e2e9f2;border-radius:5px}.filter{color:#3a5b7f;font-weight:600;padding:10px}.filter[aria-pressed="true"]{background:#004ba5}.filter:hover{border-color:#9bbddd}.search{border-color:#cbdced;border-radius:25px;color:#004ba5}.search input{color:#23364c}.count{color:#60758d}
+.grid{gap:18px}.card{border-color:#e0e6ed;border-radius:4px}.card:hover{box-shadow:0 8px 28px #004ba514;border-color:#a3cdeb}.product-art{background:#f7f9fc;border-bottom-color:#e8edf4}.ref{color:#637a95;background:#fff;border:1px solid #e1e8f1;padding:2px 7px;border-radius:3px;font-size:8px}
+.card .eyebrow{color:#007da6;font-size:9px}.card h3{color:#004ba5;font-weight:700}.description{color:#5c6878}.card ul{color:#596c81}.card li:before{color:#0089b6}
+.quote{background:#004ba5;color:#fff;border:1px solid #004ba5;border-radius:3px;padding:10px 13px;font-size:12px;min-height:44px}.quote:hover{background:#0064bc;border-color:#0064bc}.quote span{font-size:18px}
+.empty{border-color:#a7c6e3;background:#f5faff}.catalog-note{color:#64768c}
+.about{background:linear-gradient(115deg,#003e8a,#005ec9);border-radius:5px}.about .eyebrow{color:#aee7ff}.about h2{font-weight:650;letter-spacing:-.7px}.about-copy>p{color:#e1efff}.services span{color:#a6e4ff}.services div{border-color:#ffffff30}
+.contact h2{color:#004ba5;font-weight:650}.contact .eyebrow{color:#007da6}.contact .notice{border-color:#47bfe9;color:#536b85}.contact form{background:#f8fbff;border-color:#dbe6f3;border-radius:5px}.contact label{color:#27476e}form input,form select,form textarea{background:white;border-color:#ccdaea;border-radius:3px}
+footer{background:#f5f8fc;color:#004ba5;border-top:3px solid #004ba5}.footer-brand{color:#004ba5}.footer-inner p{color:#526a88}
+@media(min-width:560px){.hero{padding:36px}.benefits{font-size:11px}}
+@media(min-width:900px){.hero{padding:43px 48px;gap:40px}.hero-art{min-height:350px}.hero .actions .btn{padding:12px 15px;font-size:12px}.benefits{padding:23px 24px}.category-nav .wrap{justify-content:center;gap:32px}.nav .btn{padding:12px 20px}}
+@media(max-width:559px){.category-nav .wrap{gap:19px}.hero-note{flex-wrap:wrap;gap:8px 16px}.hero-art{min-height:285px}.hero .actions{margin:23px 0}.art-top{left:18px;top:20px}.art-index{right:18px}.art-label{left:15px;bottom:17px;padding:10px}.hero h1{font-size:39px}.benefits{gap:17px 10px}.tools{padding:11px}.filter{padding:10px 8px}.about{padding:28px}.about h2{font-size:30px}}
+@media(prefers-reduced-motion:reduce){.btn{transition:none}}

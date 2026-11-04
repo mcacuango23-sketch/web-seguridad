@@ -14,7 +14,9 @@ La marca NEXO es ficticia. Las especificaciones son ejemplos de productos genér
 
 El formulario permite preparar y copiar una solicitud. No transmite ni almacena datos. No tiene WhatsApp conectado porque falta el número real de la empresa.
 
-Para editar el archivo terminado, modifica `dist/index.html`. Para regenerarlo, edita `plantilla.html` y los productos en `generar.py`, y ejecuta `python generar.py`. Regenerar sobrescribe el HTML terminado.
+Para editar el archivo terminado, modifica `dist/index.html`. Para regenerarlo, edita `plantilla.html`, el tema en `tema.css` y los productos en `generar.py`, y ejecuta `python generar.py`. Regenerar sobrescribe el HTML terminado.
+
+El estilo de esta práctica usa azul #004ba5, celeste #47bfe9 y blanco, inspirado en la paleta pública de competencia.com.ec. Conserva la marca ficticia NEXO y las ilustraciones originales del ejercicio.
 
 El resumen de los diez productos está en `PRODUCTOS.md`.
 
